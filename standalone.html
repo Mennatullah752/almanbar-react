@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>أكاديمية المنبر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+:root {
+  --green-nav: #3f6e3c;
+  --green-dark: #2b3f35;
+  --green-soft: #dfe6d8;
+  --text: #2b2b2b;
+  --radius: 40px;
+  font-family: "Cairo", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { direction: rtl; color: var(--text); background: #fff; line-height: 1.8; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: 0; background: none; }
+img { max-width: 100%; display: block; }
+
+.container { width: min(1200px, 92%); margin-inline: auto; }
+
+/* ===== Logo ===== */
+.logo { font-family: "Aref Ruqaa", serif; font-size: 2rem; color: #fff; line-height: 1; }
+.logo--big { font-size: 3.2rem; }
+
+/* ===== Navbar ===== */
+.navbar { background: var(--green-nav); color: #fff; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+.navbar__inner { width: min(1400px, 96%); margin-inline: auto; height: 64px; display: flex; align-items: center; gap: 32px; }
+.navbar__links { display: flex; gap: 32px; font-weight: 700; margin-inline-end: auto; margin-inline-start: 24px; }
+.navbar__links a { opacity: .95; transition: opacity .2s; }
+.navbar__links a:hover { opacity: .7; }
+.navbar__user { display: flex; align-items: center; gap: 8px; }
+.icon-btn { color: #fff; display: grid; place-items: center; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg,#777,#222); border: 2px solid #fff3; }
+
+/* ===== Hero ===== */
+.hero { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 24px; padding-block: 56px 24px; }
+.hero__intro { font-size: 1.3rem; color: #555; margin-bottom: 8px; }
+.hero__verse { font-family: "Aref Ruqaa", serif; font-size: 2.6rem; line-height: 1.9; color: var(--green-dark); margin-bottom: 24px; }
+.hero__welcome { font-size: 1.25rem; line-height: 2.2; color: #333; }
+.hero__image img { width: 100%; max-height: 460px; object-fit: contain; }
+.hero__divider { grid-column: 1 / -1; width: 80%; margin: 48px auto 0; border: 0; border-top: 2px solid var(--green-dark); }
+
+/* ===== Subject cards ===== */
+.subjects { display: flex; flex-direction: column; gap: 24px; padding-block: 56px; }
+.subject-card { display: grid; grid-template-columns: 1fr 1.2fr; background: var(--green-dark); color: #fff; border-radius: var(--radius); overflow: hidden; min-height: 210px; }
+.subject-card__title { display: grid; place-items: center; border-inline-end: 2px solid #ffffff55; font-family: "Aref Ruqaa", serif; font-size: clamp(3.5rem, 8vw, 6.5rem); padding: 16px; }
+.subject-card__body { padding: 28px 36px; display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+.subject-card__body h3 { font-size: 1.3rem; font-weight: 800; }
+.subject-card__body h4 { font-size: .95rem; font-weight: 700; }
+.subject-card__body p { font-size: .9rem; line-height: 1.7; max-width: 440px; margin-bottom: 8px; }
+
+.btn { border-radius: 999px; font-weight: 800; font-size: 1.1rem; padding: 6px 28px; transition: transform .15s, opacity .15s; align-self: center; }
+.btn:hover { transform: translateY(-2px); opacity: .9; }
+.btn--light { background: #fff; color: var(--green-dark); }
+.btn--dark { background: var(--green-dark); color: #fff; padding: 6px 32px; margin-inline: auto; display: block; }
+
+/* ===== Rating ===== */
+.rating { text-align: center; padding-block: 24px 0; }
+.rating h2 { font-size: 3rem; font-weight: 800; color: var(--green-dark); }
+.rating__sub { font-weight: 800; font-size: 1.3rem; }
+.rating__text { font-size: 1.15rem; }
+.rating__grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; margin-top: 48px; }
+.rating__card { background: #fff; border-radius: 36px; box-shadow: 0 8px 32px rgba(0,0,0,.15); padding: 48px 44px; text-align: start; display: flex; flex-direction: column; gap: 10px; }
+.rating__card label { font-weight: 800; font-size: .85rem; }
+.field { display: flex; align-items: center; gap: 8px; border: 1px solid #333; border-radius: 6px; padding: 6px 10px; margin-bottom: 8px; }
+.field input { flex: 1; border: 0; outline: 0; font-family: inherit; font-size: .85rem; background: transparent; }
+.stars { display: flex; justify-content: center; gap: 12px; margin-block: 12px; }
+.stars__btn { display: flex; flex-direction: column; align-items: center; min-width: 48px; }
+.stars__btn small { font-size: .7rem; font-weight: 800; height: 16px; }
+.star { fill: #8a8a8a; transition: fill .15s, transform .15s; }
+.star--on { fill: #2b2b2b; }
+.stars__btn:hover .star { transform: scale(1.1); }
+.rating__card textarea { border: 1px solid #333; border-radius: 6px; padding: 10px; font-family: inherit; resize: none; outline: 0; }
+.rating__ok { color: var(--green-nav); font-weight: 700; text-align: center; }
+.rating__image { align-self: stretch; min-height: 380px; background: radial-gradient(circle at 70% 30%, #eef0ec 40%, transparent 41%); }
+.rating__image img { width: 100%; height: 100%; object-fit: contain; }
+
+/* ===== Footer ===== */
+.footer { background: var(--green-dark); color: #fff; margin-top: 56px; padding-top: 48px; }
+.footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.footer__links { display: grid; grid-template-columns: repeat(3, auto); gap: 16px 48px; font-weight: 700; font-size: 1.1rem; }
+.footer__social { display: flex; gap: 20px; }
+.footer__social-link { color: #fff; transition: opacity .2s; }
+.footer__social-link:hover { opacity: .7; }
+.footer__copy { text-align: center; margin-top: 24px; padding-bottom: 16px; font-size: .9rem; }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .navbar__links { display: none; }
+  .hero, .rating__grid, .subject-card { grid-template-columns: 1fr; }
+  .hero__image { order: -1; }
+  .subject-card__title { border-inline-end: 0; border-bottom: 2px solid #ffffff55; }
+  .hero__verse { font-size: 2rem; }
+  .footer__inner { justify-content: center; }
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+    <script type="text/babel">
+const navLinks = [
+  { label: "الرئيسية", href: "#home" },
+  { label: "مقرراتي الدراسية", href: "#courses" },
+  { label: "الجدول الدراسي", href: "#schedule" },
+  { label: "المكتبة", href: "#library" },
+  { label: "الدعم الاكاديمي", href: "#support" },
+];
+
+const fiqhDesc =
+  "الْفِقْهُ للشيء والعلم به، وفهم الأحكام الدقيقة والمسائل الغامضة، وهو في الأصل مطلق الفهم، وغلب استعماله في العرف مخصوصا بعلم الشريعة؛ لشرفها على سائر العلوم.";
+
+const subjects = [
+  { id: "tafseer", title: "التفسير", heading: "التعريف بعلم التفسير", book: "الفقه الميسر في ضوء الكتاب والسنة", desc: fiqhDesc },
+  { id: "fiqh", title: "الفقه", heading: "الفقه الميسر", book: "الفقه الميسر في ضوء الكتاب والسنة", desc: fiqhDesc },
+  { id: "aqeeda", title: "العقيدة", heading: "الفقه الميسر", book: "الفقه الميسر في ضوء الكتاب والسنة", desc: fiqhDesc },
+  { id: "hadith", title: "الحديث", heading: "الفقه الميسر", book: "الفقه الميسر في ضوء الكتاب والسنة", desc: fiqhDesc },
+];
+
+
+function Navbar() {
+  return (
+    <header className="navbar">
+      <div className="navbar__inner">
+        <a href="#home" className="logo">المنبر</a>
+        <nav className="navbar__links">
+          {navLinks.map((l) => (
+            <a key={l.href} href={l.href}>{l.label}</a>
+          ))}
+        </nav>
+        <div className="navbar__user">
+          <button className="icon-btn" aria-label="الإشعارات">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5-6.7V3a2 2 0 1 0-4 0v1.3A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z" />
+            </svg>
+          </button>
+          <div className="avatar" />
+          <button className="icon-btn" aria-label="قائمة المستخدم">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+
+function Hero() {
+  return (
+    <section id="home" className="hero container">
+      <div className="hero__text">
+        <p className="hero__intro">قال الله تعالى:</p>
+        <h1 className="hero__verse">
+          قُلۡ هَلۡ يَسۡتَوِي ٱلَّذِينَ <br /> يَعۡلَمُونَ وَٱلَّذِينَ لَا يَعۡلَمُونَ
+        </h1>
+        <p className="hero__welcome">
+          ترحب اكاديمية المنبر بالطلبة الجدد، سائلين الله تعالى لهم التوفيق والنجاح،
+          ونهيب بهم جميعاً بالإخلاص اولاً في طلب العلم، والسعي الدائم في تحصيل ما ينفع،
+          وربط ما يدرس ويتعلم بحياته قولاً وعملاً، وفقكم الله جميعاً لما يحبه ويرضاه.
+        </p>
+      </div>
+      <div className="hero__image">
+        {/* حطي صورة المسجد في images/mosque.webp */}
+        <img src="images/mosque.webp" alt="مجسم مسجد" onError={(e) => (e.currentTarget.style.visibility = "hidden")} />
+      </div>
+      <hr className="hero__divider" />
+    </section>
+  );
+}
+
+
+function SubjectCard({ subject }) {
+  return (
+    <article className="subject-card">
+      <div className="subject-card__title"><span>{subject.title}</span></div>
+      <div className="subject-card__body">
+        <h3>{subject.heading}</h3>
+        <h4>الكتاب: {subject.book}</h4>
+        <p>{subject.desc}</p>
+        <button className="btn btn--light">ادرس الان</button>
+      </div>
+    </article>
+  );
+}
+
+
+function Star({ filled }) {
+  return (
+    <svg viewBox="0 0 24 24" width="44" height="44" className={filled ? "star star--on" : "star"}>
+      <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
+    </svg>
+  );
+}
+
+function RatingForm() {
+  const [form, setForm] = React.useState({ name: "", email: "", comment: "" });
+  const [rating, setRating] = React.useState(0);
+  const [hover, setHover] = React.useState(0);
+  const [sent, setSent] = React.useState(false);
+
+  const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!rating) return alert("من فضلك اختر تقييمك بالنجوم");
+    // TODO: ابعتي البيانات للـ API هنا
+    console.log({ ...form, rating });
+    setSent(true);
+    setForm({ name: "", email: "", comment: "" });
+    setRating(0);
+  };
+
+  const active = hover || rating;
+
+  return (
+    <section className="rating container">
+      <h2>اضف تقييمك</h2>
+      <p className="rating__sub">ساعدنا في التحسين بشكل مستمر في اكاديمية المنبر</p>
+      <p className="rating__text">
+        فإننا نعمل جاهدين على تحسين جودة ايصال العلوم الشرعية، لا تبخل بأن تكون جزء من هذا العمل
+      </p>
+
+      <div className="rating__grid">
+        <form className="rating__card" onSubmit={onSubmit}>
+          <label htmlFor="name">الاسم بالكامل</label>
+          <div className="field">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4 0-8 2-8 5v1h16v-1c0-3-4-5-8-5Z" />
+            </svg>
+            <input id="name" name="name" placeholder="الاسم بالكامل" value={form.name} onChange={onChange} required />
+          </div>
+
+          <label htmlFor="email">البريد الالكتروني</label>
+          <div className="field">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8L4 7.5V8l8 5 8-5v-.5L12 13Z" />
+            </svg>
+            <input id="email" name="email" type="email" placeholder="البريد الالكتروني" value={form.email} onChange={onChange} required />
+          </div>
+
+          <div className="stars" onMouseLeave={() => setHover(0)}>
+            {[1, 2, 3, 4, 5].map((n) => (
+              <button type="button" key={n} className="stars__btn" aria-label={n + " من 5"}
+                onMouseEnter={() => setHover(n)} onClick={() => setRating(n)}>
+                <Star filled={n <= active} />
+                {n === 1 && <small>غير راض</small>}
+                {n === 5 && <small>راض جدا</small>}
+              </button>
+            ))}
+          </div>
+
+          <textarea name="comment" rows="5" placeholder="التقييم .... (اختياري)" value={form.comment} onChange={onChange} />
+          <button type="submit" className="btn btn--dark">أرسل تقييمك</button>
+          {sent && <p className="rating__ok">شكراً لك، وصلنا تقييمك 💚</p>}
+        </form>
+
+        <div className="rating__image">
+          {/* حطي صورة الموبايل في images/feedback.webp */}
+          <img src="images/feedback.webp" alt="" onError={(e) => (e.currentTarget.style.visibility = "hidden")} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+function Social({ label, d }) {
+  return (
+    <a href="#" aria-label={label} className="footer__social-link">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d={d} /></svg>
+    </a>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer__inner container">
+        <a href="#home" className="logo logo--big">المنبر</a>
+        <nav className="footer__links">
+          {navLinks.map((l) => (
+            <a key={l.href} href={l.href}>{l.label}</a>
+          ))}
+        </nav>
+        <div className="footer__social">
+          <Social label="Telegram" d="M21.9 4.3 18.7 19.5c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.6 13 1.9 11.5c-1-.3-1-1 .2-1.5L20.3 3c.9-.3 1.7.2 1.6 1.3Z" />
+          <Social label="YouTube" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2C.5 9 .5 12 .5 12s0 3 .5 4.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.5-1.8.5-4.8.5-4.8s0-3-.5-4.8ZM9.8 15.5v-7l6 3.5-6 3.5Z" />
+          <Social label="Instagram" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5ZM17.5 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z" />
+          <Social label="Facebook" d="M14 8V6.5c0-.7.2-1 1.2-1H17V2h-2.8C11.300 2 10 3.700 10 6v2H7.5v3.5H10V22h4V11.500h2.800L17.300 8H14Z" />
+        </div>
+      </div>
+      <p className="footer__copy">جميع الحقوق محفوظة لأكاديمية المنبر ©2024</p>
+    </footer>
+  );
+}
+
+
+
+function App() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <section id="courses" className="subjects container">
+          {subjects.map((s) => (
+            <SubjectCard key={s.id} subject={s} />
+          ))}
+        </section>
+        <RatingForm />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+    </script>
+  </body>
+</html>
